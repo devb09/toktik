@@ -19,6 +19,10 @@ class VideoButtons extends StatelessWidget {
           iconData: Icons.remove_red_eye_outlined,
           value: video.likes,
         ),
+        _CustomIconButton(
+          iconData: Icons.play_circle_outline,
+          value: 0,
+        ),
       ],
     );
   }
@@ -43,7 +47,7 @@ class _CustomIconButton extends StatelessWidget {
               color: color,
               size: 34,
             )),
-        Text(HumanFormats.humanRedeableNumber(value.toDouble()))
+        if (value > 0) Text(HumanFormats.humanRedeableNumber(value.toDouble()))
       ],
     );
   }
