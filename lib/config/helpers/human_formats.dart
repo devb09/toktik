@@ -4,11 +4,9 @@ class HumanFormats {
   //static no necesita instancia para acceder a métodos
   static String humanRedeableNumber(double number){
 
-    final formatterNumber = NumberFormat.compactCurrency(
+    return NumberFormat.compactCurrency(
       decimalDigits: 0,
       symbol: '',
     ).format(number);
-
-    return '';
   }
 }
