@@ -46,9 +46,25 @@ class _FullScreenPlayerState extends State<FullScreenPlayer> {
 
         return AspectRatio(
           aspectRatio: _controller.value.aspectRatio,
-          child: VideoPlayer(_controller),
+          child: Stack(children: [
+            VideoPlayer(_controller),
+            Positioned(child: _VideoCaption(caption: widget.caption), bottom: 50, left: 20)
+          ]),
         );
       },
     );
+  }
+}
+
+class _VideoCaption extends StatelessWidget {
+  final String caption;
+
+  const _VideoCaption({super.key, required this.caption});
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final style = Theme.of(context).textTheme.titleLarge;
+    return SizedBox(width: size.width*0.6,child: Text(caption, maxLines: 2, style: style,),);
   }
 }
